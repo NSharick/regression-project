@@ -27,10 +27,10 @@
 |----------|---------|
 |taxvaluedollarcnt|Home sale price for homes sold in 2017|
 |yearbuilt|Year that the home was built|
-|calculatedfinishedsquarefeet|Square footagge of the home|
+|calculatedfinishedsquarefeet|Square footage of the home|
 |bedroomcnt|Number of bedrooms in the home|
 |bathroomcnt|Number of bathrooms in the home|
-|fips|Federal information processing standards - for this project specifically relating to location of the property with the first two numbers representing the state and the last four numbers representing the county code. In this data set the values in the fips column are missing a leading '0' for the state code of '06' representing the state of California|
+|fips|Federal information processing standards - for this project specifically relating to location of the property with the first two numbers representing the state and the last three numbers representing the county code. In this data set the values in the fips column are missing a leading '0' for the state code of '06' representing the state of California|
 
 ### Project Planning:
 
@@ -82,7 +82,28 @@ To reproduce my findings on this project you will need:
 
 ### Key Findings:
 
+- Goal 1 was to explore the zillow dataset and find features with the strongest relationship to home prices and that could be used to improve the predictive model. The best features found during data exploration were the home's square footage, the year the home was built, the number of bedrooms the home has and the number of bathrooms the home has.
+
+- Goal 2 was to find the best performing predictive regression model that can be used to gain further insight on predicting home price. This project found that the polynomial model with only interactions and with square footage, year built, bathroom count, and bedroom count as input features performed the best. Further investigation on improving the model's performance resulted in a 69.5% improvement in reduction of root mean squared error by splitting the dataset into three datasets based on region (fips code).
+
+- Goal 3 was to provide insight into what region the homes were located in. The dataset has a column labeled 'fips' which is the Federal information processing standards - for this project specifically relating to location of the property with the first two numbers representing the state and the last three numbers representing the county code. In this data set the values in the fips column are missing a leading '0' for the state code of '06' representing the state of California.
+    - fips code 06037 = Los Angeles, CA
+    - fips code 06059 = Orange County, CA
+    - fips code 06111 = Ventura County, CA
+    
+- Goal 4 was to provide actionable recomendations which are included in the section below
+
 ### Recomendations:
 
+- Since so many of the features in the zillow dataset had a significant amount of missing values it would be valueable to find other sources of historical data for the homes in the dataset and see if some of those values could be filled. In many cases over half of the observations had missing values in a column and using a measure of central tendencey to fill the values did not provide valuable information.
+
+- The best performing model from this project should be compared to the current model to evaluate performance differences and to inform updates to the current model.
+
+- Since splitting the data by region and modeling each region seperately increased the model's performance the current model should also be tested with the data split by region to see how it impacts the model's performance.
+
 ### Next Steps:
+
+- Further investigation into features that relate to home price is needed to develop a more accurate model. This will be especially important if updated data that fills in the missing values is obtained.
+
+- This project found that splitting the dataset by region then modeling each seperately increased the model's accuracy but it was only the first step in exploring this feature manipulation and it should be explored further.
 
